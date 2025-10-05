@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| Roll Forming & Metal Corrugating |</title>
+    <!-- custom css file -->
+    <link rel="stylesheet" href="./css/signup.css" />
+
+    <!-- bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-8 col-lg-6 bg-color p-4 rounded">
+          <h2 class="text-center mb-4">Sign Up</h2>
+          <form autocomplete="off" novalidate name="myform">
+            <div class="mb-3">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" placeholder="name" />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <label for="email">Email Address</label>
+              <input type="email" name="email" id="email" placeholder="email address" />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <input
+                type="password" name="password"
+                id="password"
+                placeholder="password"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password" name="confirmPassword"
+                id="confirmPassword"
+                placeholder="confirm password"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <label for="phone">Phone Number</label>
+              <input type="tel" name="phone" id="phone" placeholder="phone number" maxlength="10" />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <label for="dateofbirth">Date of Birth</label>
+              <input
+                type="date"
+                name="dateofbirth"
+                id="dateofbirth"
+                placeholder="date of birth"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="mb-3 row">
+              <div class="col-sm-3">
+                <label>Gender</label>
+              </div>
+              <div class="col-sm-9 d-flex justify-content-sm-between">
+                <div class="me-3 me-md-0">
+                  <input type="radio" name="gender" id="male" value="male" />
+                  <label for="male" class="gender">Male</label>
+                </div>
+                <div class="me-3 me-md-0">
+                  <input type="radio" name="gender" id="female" value="female" />
+                  <label for="female" class="gender">Female</label>
+                </div>
+                <div class="me-3 me-md-0">
+                  <input type="radio" name="gender" id="other" value="other" />
+                  <label for="other" class="gender">Other</label>
+                </div>
+              </div>
+              <span class="error"></span>
+            </div>
+            <div class="mb-3">
+              <input type="checkbox" id="terms" name="terms" />
+              <label for="terms" class="accept"> I agree to the Terms and Conditions </label>
+              <br>
+              <span class="error"></span>
+            </div>
+            <button type="submit">Sign Up</button>
+          </form>
+          <p class="text-center mt-3">
+            Already have an account? <a href="./signin.html">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/signup.js"></script>
+
+    <!-- bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
