@@ -1,308 +1,143 @@
 // index page script for welcome message and sign in/out button toggle
 const messageElement = document.getElementById("welcomeMessage");
-const signinButton = document.getElementById("signinBtn");
-const signoutButton = document.getElementById("signoutBtn");
+const signinBtn = document.getElementById("signinBtn");
+const signoutBtn = document.getElementById("signoutBtn");
 
-const urlParams = new URLSearchParams(window.location.search);
-const userName = urlParams.get("user");
-console.log(userName) ;
-console.log(localStorage.getItem(userName))
-if (localStorage.getItem(userName)) {
-  messageElement.textContent = `Welcome, ${JSON.parse(localStorage.getItem(userName)).name}`;
+if(localStorage.getItem('currentUser')) {
+  messageElement.textContent = `Hello, ${localStorage.getItem('currentUser')}`;
   messageElement.style.display = "inline-block";
-  signinButton.style.display = "none";
-  signoutButton.style.display = "block";
-} else if(userName != null) {
-  window.location.href = "./NotFound.html"
+  signinBtn.style.display = "none";
+  signoutBtn.style.display = "block";
 }
 
 
 
+// hide and show sign up and sign in forms
+$(document).ready(function(){
+    // Prevent the link from jumping and hide the div
+    $("#signup-link").click(function(e){
+        e.preventDefault(); // Prevents the default anchor tag behavior
+        $("#signin-content").hide();
+        $("#signinForm-title").hide();
+        $("#signupForm-title").show();
+        $("#signup-content").show();
+    });
+
+    // Prevent the link from jumping and show the div
+    $("#signin-link").click(function(e){
+        e.preventDefault(); // Prevents the default anchor tag behavior
+        $("#signup-content").hide();
+        $("#signupForm-title").hide();
+        $("#signinForm-title").show();
+        $("#signin-content").show();
+    });
+
+    // To hide a Signup content and show a Signin content after a Bootstrap modal's data-bs-dismiss button is clicked
+    $('#formModal').on('hidden.bs.modal', function () {
+        $("#signup-content").hide();
+        $("#signupForm-title").hide();
+        $("#signinForm-title").show();
+        $("#signin-content").show();
+    });
+});
+
+$(document).ready(function() {
+    
+});
 
 
-// sign in page validation
+
+// sign in form inputs
 const form1 = document.forms["signinform"];
+console.log(form1)
+const email1 = form1["email1"];
+const password1 = form1["password1"];
+const mistakeArray = document.getElementsByClassName("mistake");
+const signinButton = document.getElementById("signin");
 
 form1.addEventListener("submit", (e) => {
   e.preventDefault();
-  validate();
+  validateSigninForm();
 });
 
-function validate() {
-  const username = form1["username"];
-  const password = form1["password"];
 
-  const errorArray = document.getElementsByClassName("error");
 
-  username.addEventListener("input", () => {
-    errorArray[0].innerText = "";
+function validateSigninForm() {
+  email1.addEventListener("input", () => {
+    mistakeArray[0].innerText = "";
   });
 
-  password.addEventListener("input", () => {
-    errorArray[1].innerText = "";
+  password1.addEventListener("input", () => {
+    mistakeArray[1].innerText = "";
   });
+
+  
 
   // Validation checks
-  if (username.value === "") {
-    errorArray[0].innerText = "username is required";
+  if (email1.value === "") {
+    mistakeArray[0].innerText = "email is required";
+    return;
+  } else if (!validateEmail(email1.value.toLowerCase())) {
+    mistakeArray[0].innerText = "invalid email format";
     return;
   } else {
-    errorArray[0].innerText = "";
+    mistakeArray[0].innerText = "";
   }
 
-  if (password.value === "") {
-    errorArray[1].innerText = "password is required";
+
+  const storedData = JSON.parse(localStorage.getItem(email1.value));
+  if (password1.value === "") {
+    mistakeArray[1].innerText = "password is required";
+    return;
+  } else if (storedData.password !== password1.value) {
+    mistakeArray[1].innerText = "Incorrect password";
     return;
   } else {
-    errorArray[1].innerText = "";
+    mistakeArray[1].innerText = "";
   }
 
-  // If all validations pass, submit the form
-  if (localStorage.getItem(username.value) === null) {
-    errorArray[0].innerText = "Username not registered";
-    return;
-  }
 
-  const storedData = JSON.parse(localStorage.getItem(username.value));
-  if (storedData.password !== password.value) {
-    errorArray[1].innerText = "Incorrect password";
-    return;
-  }
-
-  // Redirect to index.html with username as query parameter
-  const signinButton = document.getElementById("signin");
   signinButton.textContent = "Signing In...";
   signinButton.disabled = true;
-
-  window.location.href = `index.html?user=${username.value}`;
-}
-
-
-function confirmation(){
-  let confirmation = confirm("Are you sure you want to sign out?");
-
-  if (confirmation) {
-    alert("Sign out successfully!");
-    window.location.href = "./index.html";
-  }
-}
-
-
-validatePassword = (password) => {
-  // Password must be at least 8 characters long, contain at least one uppercase letter,
-  // one lowercase letter, one number, and one special character
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  return passwordRegex.test(password);
-};
-
-
-// Function to open the signup modal from the first modal
-/*
-function openSignupModal() {
-  // Get modal instances
-  const firstModal = bootstrap.Modal.getInstance(
-    document.getElementById("signinModal")
-  );
-  const secondModal = new bootstrap.Modal(
-    document.getElementById("signupModal")
-  );
-
-  // Hide first modal and show second modal
-  firstModal.hide();
-
-  // Wait for first modal to be completely hidden
-  document
-    .getElementById("signinModal")
-    .addEventListener("hidden.bs.modal", function () {
-      document.getElementById("signupModal");
-  });
-
-  // Hide first modal and show second modal
-  firstModal.hide();
-
-  // Wait for first modal to be completely hidden
-  document
-    .getElementById("signinModal")
-    .addEventListener("hidden.bs.modal", function () {
-      secondModal.show();
-    });
-}
-*/
-
-
-// sign up page validation
-/*
-const form2 = document.forms["signupform"];
-
-form2.addEventListener("submit", (e) => {
-  e.preventDefault();
-  validate();
-});
-
-document.getElementById("phone").addEventListener("keydown", function (event) {
-  // Allow control keys like Backspace, Delete, Arrow keys, etc.
-  const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
-
-  // Allow numbers (0-9) and control keys
-  if (
-    (event.key >= "0" && event.key <= "9") ||
-    allowedKeys.includes(event.key)
-  ) {
-    return; // Allow the keypress
-  }
-
-  // Prevent all other keys
-  event.preventDefault();
-});
-
-function validate() {
-  const name = form2["name"];
-  const email = form2["email2"];
-  const password = form2["password2"];
-  const confirmPassword = form2["confirmPassword"];
-  const phone = form2["phone"];
-  const dob = form2["dateofbirth"];
-  const gender = form2["gender"];
-  const terms = form2["terms"];
-
-  const errorArray = document.getElementsByClassName("error");
-
-  console.log(name);
-  console.log(email);
-  console.log(password);
-  console.log(confirmPassword);
-  console.log(phone);
-  console.log(dob);
-  console.log(gender);
-  console.log(terms);
-  console.log(errorArray);
-
-  name.addEventListener("input", () => {
-    errorArray[0].innerText = "";
-  });
-
-  email.addEventListener("input", () => {
-    errorArray[1].innerText = "";
-  });
-
-  password.addEventListener("input", () => {
-    errorArray[2].innerText = "";
-  });
-
-  confirmPassword.addEventListener("input", () => {
-    errorArray[3].innerText = "";
-  });
-
-  phone.addEventListener("input", () => {
-    errorArray[4].innerText = "";
-  });
-
-  dob.addEventListener("input", () => {
-    errorArray[5].innerText = "";
-  });
-
-  for (let i = 0; i < gender.length; i++) {
-    gender[i].addEventListener("change", () => {
-      errorArray[6].innerText = "";
-    });
-  }
-
-  terms.addEventListener("change", () => {
-    errorArray[7].innerText = "";
-  });
-
-
-  // Validation checks
-  if (name.value === "") {
-    errorArray[0].innerText = "name is required";
-    return;
-  } else {
-    errorArray[0].innerText = "";
-  }
-
-  if (email.value === "") {
-    errorArray[1].innerText = "Email is required";
-    return;
-  } else if (!validateEmail(email.value.toLowerCase())) {
-    errorArray[1].innerText = "Invalid email format";
-    return;
-  } else {
-    errorArray[1].innerText = "";
-  }
-
-  if (password.value === "") {
-    errorArray[2].innerText = "Password is required";
-    return;
-  } else if (!validatePassword(password.value)) {
-    errorArray[2].innerText =
-      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character";
-    return;
-  } else {
-    errorArray[2].innerText = "";
-  }
-
-  if (confirmPassword.value === "") {
-    errorArray[3].innerText = "Confirm Password is required";
-    return;
-  } else if (confirmPassword.value !== password.value) {
-    errorArray[3].innerText = "Passwords do not match";
-    return;
-  } else {
-    errorArray[3].innerText = "";
-  }
-
-  if (phone.value === "") {
-    errorArray[4].innerText = "Phone number is required";
-    return;
-  } else if (phone.value.length < 10) {
-    errorArray[4].innerText = "Phone number must be 10 digits";
-    return;
-  } else {
-    errorArray[4].innerText = "";
-  }
-
-  if (dob.value === "") {
-    errorArray[5].innerText = "Date of Birth is required";
-    return;
-  } else {
-    errorArray[5].innerText = "";
-  }
-
-  if (gender.value === "") {
-    errorArray[6].innerText = "Gender is required";
-    return;
-  } else {
-    errorArray[6].innerText = "";
-  }
-
-  if (!terms.checked) {
-    errorArray[7].innerText = "You must accept the terms and conditions";
-    return;
-  } else {
-    errorArray[7].innerText = "";
-  }
-
-
-  // If all validations pass, submit the form
-  localStorage.setItem(email.value, JSON.stringify({
-    name: name.value,
-    email: email.value,
-    password: password.value,
-    phone: phone.value,
-    dateofbirth: dob.value,
-    gender: gender.value,
-  }));
-  alert("Sign up successful!");
+  localStorage.setItem('currentUser', storedData.name);
   
-  window.location.href = "./signin.html";
+  // dismiss the modal
+  setTimeout(() => {
+    const signinModal = document.getElementById('signinModal');
+    const modal = bootstrap.Modal.getInstance(signinModal); 
+    modal.hide();
+  
+    messageElement.textContent = `Hii, ${localStorage.getItem('currentUser')}`;
+    messageElement.style.display = "inline-block";
+    signinBtn.style.display = "none";
+    signoutBtn.style.display = "block";
+  }, 500)
 }
+
+
+function signout() {
+  localStorage.removeItem('currentUser');
+
+  // dismiss the modal
+  const confirmModal = document.getElementById('confirmModal');
+  const modal = bootstrap.Modal.getInstance(confirmModal); 
+  modal.hide();
+  messageElement.style.display = 'none';
+  signinBtn.style.display = 'block';
+  signoutBtn.style.display = 'none';
+  email1.value = "";
+  password1.value = "";
+  signinButton.textContent = "Sign In";
+  signinButton.disabled = false;
+}
+
 
 validateEmail = (email) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 };
 
+
 validatePassword = (password) => {
   // Password must be at least 8 characters long, contain at least one uppercase letter,
   // one lowercase letter, one number, and one special character
@@ -310,13 +145,11 @@ validatePassword = (password) => {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordRegex.test(password);
 };
-*/
-
 
 
 // navigation bar close and display
 
-const menuBtn = document.getElementById('menu-toggle')
+const menuBtn = document.getElementById('menu-toggle');
 const navbar = document.getElementById('navbar');
 
 menuBtn.addEventListener('click' , () => {
@@ -332,3 +165,22 @@ closeBtn.addEventListener('click', () => {
   navbar.style.width = '0';
   navbar.style.opacity = '0';
 })
+
+
+
+
+
+
+// sign up form inputs
+const form2 = document.forms["signupform"];
+console.log(form2)
+const Name = form2["name"];
+const username = form2["username"];
+const email2 = form2["email2"];
+const password2 = form2["password2"];
+const confirmPassword = form2["confirmPassword"];
+const phone = form2["phone"];
+const dob = form2["dateofbirth"];
+const gender = form2["gender"];
+const terms = form2["terms"];
+const errorArray = document.getElementsByClassName("error");

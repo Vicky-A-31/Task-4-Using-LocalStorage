@@ -65,7 +65,7 @@ function validate() {
 
   setTimeout(() => {
     window.location.href = `index.html?user=${storedData.name}`;
-  }, 1000);
+  }, 500);
 }
 
 validateEmail = (email) => {

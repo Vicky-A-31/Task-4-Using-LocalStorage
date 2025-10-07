@@ -85,6 +85,7 @@ a {
 
 #modal-width {
     width: 400px;
+    margin: auto;
 }
 
 #modal-width p {
@@ -131,7 +132,13 @@ a {
         height: 18px;
         margin-right: 5px;
     }
+
+    #modal-width {
+        width: 350px;
+        margin: auto;
+    }
 }
+
 
 @media (max-width: 576px) {
     .bg-color {
@@ -173,5 +180,10 @@ a {
 
     p {
         font-size: 12px;
+    }
+
+    .modal-content {
+        width: 300px !important;
+        margin: auto;
     }
 }

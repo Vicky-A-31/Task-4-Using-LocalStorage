@@ -1,10 +1,20 @@
 const form = document.forms["myform"];
+const Name = form["name"];
+const username = form["username"];
+const email = form["email"];
+const password = form["password"];
+const confirmPassword = form["confirmPassword"];
+const phone = form["phone"];
+const dob = form["dateofbirth"];
+const gender = form["gender"];
+const terms = form["terms"];
 const errorArray = document.getElementsByClassName("error");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   validate();
 });
+
 
 document.getElementById("phone").addEventListener("keydown", function (event) {
   // Allow control keys like Backspace, Delete, Arrow keys, etc.
@@ -22,7 +32,7 @@ document.getElementById("phone").addEventListener("keydown", function (event) {
   event.preventDefault();
 });
 
-const username = form["username"];
+
 username.addEventListener("input", () => {
   if (localStorage.getItem(username.value)) {
     errorArray[1].innerText = "username is not available";
@@ -31,39 +41,34 @@ username.addEventListener("input", () => {
   }
 });
 
+
 // Function to check if email already exists in localStorage
 function isEmailExists(email) {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
+    const value = JSON.parse(localStorage.getItem(key));
 
     // Check if the value matches the email we're looking for
-    if (value === email) {
+    if (value.email === email) {
       return true;
     }
   }
   return false;
 }
 
-const email = form["email"];
+
 email.addEventListener("input", () => {
   if (isEmailExists(email.value.toLowerCase())) {
-    errorArray[2].innerText = "email is not available";
+    errorArray[2].innerText = "email is already registered";
   } else {
     errorArray[2].innerText = "";
   }
 });
 
-function validate() {
-  const name = form["name"];
-  const password = form["password"];
-  const confirmPassword = form["confirmPassword"];
-  const phone = form["phone"];
-  const dob = form["dateofbirth"];
-  const gender = form["gender"];
-  const terms = form["terms"];
 
-  name.addEventListener("input", () => {
+function validate() {
+
+  Name.addEventListener("input", () => {
     errorArray[0].innerText = "";
   });
 
@@ -77,7 +82,7 @@ function validate() {
 
   email.addEventListener("input", () => {
     if (isEmailExists(email.value.toLowerCase())) {
-      errorArray[2].innerText = "email is not available";
+      errorArray[2].innerText = "email is already registered";
     } else {
       errorArray[2].innerText = "";
     }
@@ -110,9 +115,9 @@ function validate() {
   });
 
   // Validation checks
-  if (name.value === "") {
+  if (Name.value === "") {
     errorArray[0].innerText = "name is required";
-    name.focus();
+    Name.focus();
     return;
   } else {
     errorArray[0].innerText = "";
@@ -136,6 +141,10 @@ function validate() {
     return;
   } else if (!validateEmail(email.value.toLowerCase())) {
     errorArray[2].innerText = "invalid email format";
+    email.focus();
+    return;
+  } else if (isEmailExists(email.value.toLowerCase())) {
+    errorArray[2].innerText = "email is already registered";
     email.focus();
     return;
   } else {
@@ -204,7 +213,7 @@ function validate() {
   localStorage.setItem(
     username.value,
     JSON.stringify({
-      name: name.value,
+      name: Name.value,
       email: email.value.toLowerCase(),
       password: password.value,
       phone: phone.value,
@@ -216,6 +225,7 @@ function validate() {
   showRegistrationSuccessModal();
 }
 
+
 function showRegistrationSuccessModal() {
   const registrationSuccessModal = new bootstrap.Modal(
     document.getElementById("signupSuccessModal")
@@ -223,10 +233,12 @@ function showRegistrationSuccessModal() {
   registrationSuccessModal.show();
 }
 
+
 validateEmail = (email) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 };
+
 
 validatePassword = (password) => {
   // Password must be at least 8 characters long, contain at least one uppercase letter,

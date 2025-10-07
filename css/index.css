@@ -53,11 +53,13 @@ nav li a {
     text-decoration: none;
 }
 
-.social-icons {
+.header {
     display: flex;
     justify-content: flex-end;
+    height: 44px;
     padding: 5px;
 }
+
 
 #menu-toggle {
     display: none;
@@ -70,6 +72,7 @@ nav li a {
 #menu-toggle > img {
     margin: 0;
     padding: 0;
+    transform: scale(1);
 }
 
 /* mobile navbar style start */
@@ -111,6 +114,7 @@ nav li a {
 /* mobile navbar style end */
 
 
+
 #signinBtn {
     background-color: rgb(239, 147, 55);
     padding: 5px 10px;
@@ -141,19 +145,19 @@ nav li a {
     background-color: rgb(255, 64, 64);
 }
 
-.social-icons img {
-    margin: 5px 10px;
-}
-
-.social-icons img:hover {
-    transform: scale(1.3);
-}
 
 #welcomeMessage {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(0, 225, 255);
+    height: 35px;
     display: none;
+    align-self: baseline;
+    box-sizing: border-box;
+    font-size: 20px;
     padding: 5px;
+    margin-right: auto;
+    margin-bottom: 0;
+    border: 2px solid white;
+    border-radius: 2px;
 }
 
 .main-header {
@@ -262,172 +266,38 @@ nav li a {
     margin: 5px;
 }
 
-/* index page styles end */
 
-/* signin page styles start */
-
-.bg-color {
-    background-color: rgba(33, 57, 96) !important;
+/* footer section styles start */
+footer {
+    background-color: rgba(33, 57, 96, 0.8);
+    padding: 10px;
 }
 
-.modal-content h2, .modal-content p {
-    color: white !important;
+.social-icons {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin: 10px 0;
 }
 
-.modal-header {
-    position: relative;
+.social-icons img {
+    margin: 5px 10px;
 }
 
-h2 {
-    font-size: 24px !important;
-    width: 100% ;
+.social-icons img:hover {
+    transform: scale(1.3);
 }
 
+.copyright {
+    text-align: center;
+    color: white;
+}
 
-/* sign in popup close button */
-.btn-close {
+.copyright p {
     margin: 0;
-    position: absolute;
-    right: 12px;
 }
 
-form {
-    color: white;
-}
-
-form label {
-    font-size: 18px;
-}
-
-/* input field height */
-.height {
-    height: 88px;
-}
-
-#height-for-terms {
-    height: 50px;
-}
-
-form input, form button {
-    width: 100%;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-}
-
-form button {
-    background-color: rgb(239, 147, 55);
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-input {
-    accent-color: rgb(239, 147, 55);
-    background-color: white;
-    outline: none;
-}
-
-form button:hover {
-    background-color: rgb(218, 148, 78);
-}
-
-.modal-content a {
-    color: rgb(0, 0, 0) !important;
-}
-
-#modal-width {
-    width: 400px;
-}
-
-#modal-width p {
-    font-size: 16px;
-}
-
-#modal-width button {
-    font-size: 16px;
-    padding: 5px 10px;
-    width: auto;
-}
-
-#modal-width img {
-    margin-right: 10px;
-}
-
-.error {
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-}
-
-/* signin page styles end */
-
-
-/* signup page styles start */
-/*
-h2, p {
-    color: white !important;
-}
-
-form {
-    color: white;
-}
-
-form label {
-    margin-bottom: 5px;
-    font-size: 18px;
-}
-
-form input, form button {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    font-size: 20px;
-}
-
-form button {
-    background-color: rgb(239, 147, 55);
-    color: white;
-    cursor: pointer;
-}
-
-input {
-    accent-color: rgb(239, 147, 55);
-    background-color: white;
-    outline: none;
-}
-
-form button:hover {
-    background-color: rgb(218, 148, 78);
-}
-
-#terms {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-input[type="radio"] {
-    width:20px;
-    height: 20px;
-}
-
-input[type="radio"], .gender, input[type="checkbox"], .accept {
-    vertical-align: middle;
-    margin-bottom: 0;
-}
-
-a {
-    color: rgb(0, 0, 0) !important;
-}
-
-.error {
-    color: rgb(0, 0, 0);
-    font-size: 14px;
-}
-*/
-/* signup page styles end */
+/* index page styles end */
 
 
 
@@ -438,6 +308,7 @@ a {
         padding: 10px;
     }
 }
+
 
 
 @media (min-width: 990px) and (max-width: 1200px) {
@@ -495,35 +366,6 @@ a {
 
 
 
-/* sign in page responsive media queries starts */
-
-@media (max-width: 768px) {
-    h2 {
-        font-size: 22px !important;
-    }
-
-    form input, form button {
-        font-size: 18px;
-    }
-
-    form input {
-        padding: 5px 8px;
-    }
-
-    form label {
-        font-size: 16px;
-    }
-
-    .modal-body, .modal-header {
-        padding: 12px !important;
-    }
-}
-
-/* sign in page responsive media queries end */
-
-
-
-
 @media (min-width: 650px) and (max-width: 770px) {
     .bg-color {
         padding: 0 6px !important;
@@ -545,6 +387,14 @@ a {
     nav li {
         width: 130px;
         font-size: 14px;
+    }
+
+    #welcomeMessage {
+        font-size: 16px;
+    }
+
+    #signoutBtn {
+        padding: 4px 8px;
     }
 
     .main-header {
@@ -612,11 +462,17 @@ a {
 
     .column2 {
         width: 100% !important;
-        padding: 0 10px;
     }
 
-    .social-icons {
+    .header {
         justify-content: space-between;
+    }
+
+    #welcomeMessage {
+        margin-left: auto;
+        margin-right: 10px;
+        font-size: 14px;
+        vertical-align: baseline;
     }
 
     #signinBtn, #signoutBtn {
@@ -634,14 +490,6 @@ a {
 
     .main-header {
         padding: 10px;
-    }
-
-    .social-icons .hide {
-        display: none;
-    }
-
-    .social-icons a {
-        font-size: 12px;
     }
 
     .main-header h1, .main-footer h4 {
@@ -707,56 +555,20 @@ a {
     .card-container p {
         font-size: 12px;
     }
-}
 
-
-
-/* sign in page responsive media queries starts */
-
-@media (max-width: 576px) {
-    .bg-color {
-        border-radius: 0;
-    }
-
-    h2 {
-        font-size: 20px !important;
-    }
-
-    form input, form button {
-        font-size: 14px;
-    }
-
-    form input {
+    footer {
         padding: 5px;
     }
 
-    form label {
-        font-size: 12px;
+    .social-icons {
+        margin: 5px 0;
+        padding: 0;
     }
 
-    input[type="radio"], #terms {
-        width:14px;
-        height: 14px;
-    }
-
-    .error {
-        font-size: 12px;
-    }
-
-    .height {
-        height: 75px;
-    }
-
-    #height-for-terms {
-        height: 48px;
-    }
-
-    p {
+    .copyright p {
         font-size: 12px;
     }
 }
-
-/* sign in page responsive media queries end */
 
 
 
