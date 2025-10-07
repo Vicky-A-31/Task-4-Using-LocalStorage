@@ -1,0 +1,798 @@
+
+/* index page styles start */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    z-index: -1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.custom-bg-color {
+    background-color: rgba(33, 57, 96, 0.8);
+}
+
+div .sidebar {
+    height: 100dvh;
+    padding: 15px;
+    position: fixed;
+}
+
+.sidebar #logo {
+    width: 250px;
+    height: 80px;
+    object-fit:cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.sidebar nav {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+nav li {
+    padding: 10px;
+    border-bottom: 1px solid white; 
+}
+
+nav li a {
+    color: white;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+#menu-toggle {
+    display: none;
+    background-color: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    padding: 2px;
+}   
+
+#menu-toggle > img {
+    margin: 0;
+    padding: 0;
+}
+
+/* mobile navbar style start */
+#navbar {
+    display: none;
+    background-color: rgba(33, 57, 96);
+    height: 100dvh;
+    width: 400px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: 0;
+    width: 0;
+    opacity: 0;
+    z-index: 10;
+    list-style-type: none;
+    padding: 10px;
+}
+
+#navbar #close-btn {
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+}
+
+#navbar li {
+    transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+#navbar li:hover {
+    padding-left: 25px;
+}
+
+/* mobile navbar style end */
+
+
+#signinBtn {
+    background-color: rgb(239, 147, 55);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+    border: none;
+}
+
+#signinBtn:hover {
+    background-color: rgb(218, 148, 78);
+}
+
+#signoutBtn {
+    background-color: rgb(255, 50, 50);
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    transition: all 0.2s ease-in;
+    border: none;
+    margin-left: 10px;
+    display: none;
+}
+
+#signoutBtn:hover {
+    background-color: rgb(255, 64, 64);
+}
+
+.social-icons img {
+    margin: 5px 10px;
+}
+
+.social-icons img:hover {
+    transform: scale(1.3);
+}
+
+#welcomeMessage {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    padding: 5px;
+}
+
+.main-header {
+    color:white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.main-header h1, .main-header h4, .main-header h5 {
+    text-align: center;
+}
+
+.main-header hr {
+    width: 50%;
+    margin: 10px auto;
+    border: 1px solid white;
+}
+
+.main-header p {
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.main-header .buttons-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.buttons-group button {
+    background-color: rgb(239, 147, 55);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttons-group img {
+    margin-right: 2px;
+}
+
+.main-content {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.img-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.img-container p {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
+.featured-projects {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card-container {
+    width: 380px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.card-container img {
+    width: 100px;
+    height: 100%;
+    float: left;
+    margin-right: 10px;
+    object-fit: cover;
+    clear: both;
+}
+
+.card-container h5 {
+    text-align: center;
+    margin: 5px;
+}
+
+.card-container p {
+    text-align: justify;
+    margin: 5px;
+}
+
+/* index page styles end */
+
+/* signin page styles start */
+
+.bg-color {
+    background-color: rgba(33, 57, 96) !important;
+}
+
+.modal-content h2, .modal-content p {
+    color: white !important;
+}
+
+.modal-header {
+    position: relative;
+}
+
+h2 {
+    font-size: 24px !important;
+    width: 100% ;
+}
+
+
+/* sign in popup close button */
+.btn-close {
+    margin: 0;
+    position: absolute;
+    right: 12px;
+}
+
+form {
+    color: white;
+}
+
+form label {
+    font-size: 18px;
+}
+
+/* input field height */
+.height {
+    height: 88px;
+}
+
+#height-for-terms {
+    height: 50px;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+form button {
+    background-color: rgb(239, 147, 55);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input {
+    accent-color: rgb(239, 147, 55);
+    background-color: white;
+    outline: none;
+}
+
+form button:hover {
+    background-color: rgb(218, 148, 78);
+}
+
+.modal-content a {
+    color: rgb(0, 0, 0) !important;
+}
+
+#modal-width {
+    width: 400px;
+}
+
+#modal-width p {
+    font-size: 16px;
+}
+
+#modal-width button {
+    font-size: 16px;
+    padding: 5px 10px;
+    width: auto;
+}
+
+#modal-width img {
+    margin-right: 10px;
+}
+
+.error {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+/* signin page styles end */
+
+
+/* signup page styles start */
+/*
+h2, p {
+    color: white !important;
+}
+
+form {
+    color: white;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+form button {
+    background-color: rgb(239, 147, 55);
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    accent-color: rgb(239, 147, 55);
+    background-color: white;
+    outline: none;
+}
+
+form button:hover {
+    background-color: rgb(218, 148, 78);
+}
+
+#terms {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    width:20px;
+    height: 20px;
+}
+
+input[type="radio"], .gender, input[type="checkbox"], .accept {
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+a {
+    color: rgb(0, 0, 0) !important;
+}
+
+.error {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+*/
+/* signup page styles end */
+
+
+
+/* Responsive styles start */
+
+@media (max-width: 1400px) {
+    div .sidebar {
+        padding: 10px;
+    }
+}
+
+
+@media (min-width: 990px) and (max-width: 1200px) {
+    .background {
+        height: 445px;
+    }
+
+    div .sidebar {
+        padding: 15px;
+    }
+
+    .sidebar #logo {
+        width: 180px;
+        height: 60px;
+    }
+}
+
+
+
+@media (min-width: 770px) and (max-width: 990px) {
+
+    .background {
+        height: 410px;
+    }
+
+    div .sidebar {
+        padding: 5px;
+    }
+
+    .sidebar #logo {
+        width: 150px;
+        height: 50px;
+    }
+
+    nav li {
+        width: 150px;
+    }
+
+    .main-header {
+        padding: 10px 20px;
+    }
+
+    .main-header h1 {
+        font-size: 24px;
+    }
+
+    .main-header h4, .main-header h5 {
+        font-size: 18px;
+    }
+
+    .main-content .img-container {
+        margin: 10px;
+    }
+}
+
+
+
+/* sign in page responsive media queries starts */
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 22px !important;
+    }
+
+    form input, form button {
+        font-size: 18px;
+    }
+
+    form input {
+        padding: 5px 8px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    .modal-body, .modal-header {
+        padding: 12px !important;
+    }
+}
+
+/* sign in page responsive media queries end */
+
+
+
+
+@media (min-width: 650px) and (max-width: 770px) {
+    .bg-color {
+        padding: 0 6px !important;
+    }
+
+    .background {
+        height: 350px;
+    }
+
+    div .sidebar {
+        padding: 8px;
+    }
+
+    .sidebar #logo {
+        width: 130px;
+        height: 40px;
+    }
+
+    nav li {
+        width: 130px;
+        font-size: 14px;
+    }
+
+    .main-header {
+        padding: 5px 10px;
+    }
+    
+    .main-header h1 {
+        font-size: 22px;
+    }
+
+    .main-header h4, .main-header h5 {
+        font-size: 16px;
+    }
+
+    .main-content .img-container {
+        margin: 10px;
+    }
+
+    .main-header p {
+        margin-bottom: 5px;
+        line-height: 1.2;
+    }
+
+    .main-header .buttons-group {
+        margin-top: 5px;
+    }
+
+    .buttons-group button {
+        padding: 5px;
+    }
+
+    .buttons-group img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+
+
+@media (max-width: 650px) {
+    .background {
+        height: 280px;
+    }
+
+    .row {
+        margin: 0 !important;
+    }
+
+    .column1 {
+        display: none;
+    }
+
+    .container-md {
+        padding: 0 !important;
+    }
+
+    .custom-bg-color {
+        background-color: rgba(33, 57, 96);
+    }
+
+
+    nav li {
+        font-size: 12px;
+    }
+
+    .column2 {
+        width: 100% !important;
+        padding: 0 10px;
+    }
+
+    .social-icons {
+        justify-content: space-between;
+    }
+
+    #signinBtn, #signoutBtn {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    div .sidebar {
+        padding: 5px;
+    }
+
+    .main-header {
+        padding: 10px;
+    }
+
+    .social-icons .hide {
+        display: none;
+    }
+
+    .social-icons a {
+        font-size: 12px;
+    }
+
+    .main-header h1, .main-footer h4 {
+        font-size: 20px;
+    }
+
+    .main-header h4, .main-header h5 {
+        font-size: 14px;
+    }
+
+    .main-header p {
+        font-size: 12px;
+        margin-bottom: 5px;
+        line-height: 1.2;
+    }
+
+    .main-header .buttons-group {
+        margin-top: 5px;
+    }
+
+    .buttons-group button {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .buttons-group img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .main-content {
+        margin-top: 35px;
+        margin-bottom: 20px;
+    }
+
+    .main-content .img-container {
+        margin: 5px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .img-container p {
+        font-size: 12px;
+    }
+
+    .card-container {
+        width: 100%;
+        height: auto;       
+        margin: 10px 0;
+        align-items: center;
+    }
+
+    .card-container img {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+    }
+
+    .card-container h5 {
+        font-size: 16px;
+    }
+
+    .card-container p {
+        font-size: 12px;
+    }
+}
+
+
+
+/* sign in page responsive media queries starts */
+
+@media (max-width: 576px) {
+    .bg-color {
+        border-radius: 0;
+    }
+
+    h2 {
+        font-size: 20px !important;
+    }
+
+    form input, form button {
+        font-size: 14px;
+    }
+
+    form input {
+        padding: 5px;
+    }
+
+    form label {
+        font-size: 12px;
+    }
+
+    input[type="radio"], #terms {
+        width:14px;
+        height: 14px;
+    }
+
+    .error {
+        font-size: 12px;
+    }
+
+    .height {
+        height: 75px;
+    }
+
+    #height-for-terms {
+        height: 48px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
+
+/* sign in page responsive media queries end */
+
+
+
+@media (max-width: 480px) {
+    .background {
+        height: 300px;
+    }
+
+    .main-header h1, .main-footer h4 {
+        font-size: 18px;
+    }
+
+    .main-header h4, .main-header h5 {
+        font-size: 14px;
+    }
+
+    .main-content .img-container {
+        margin: 5px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .img-container p {
+        font-size: 10px;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .background {
+        height: 320px;
+    }
+
+    .main-header h1, .main-footer h4 {
+        font-size: 16px;
+    }
+}
+
+/* Responsive styles end */
