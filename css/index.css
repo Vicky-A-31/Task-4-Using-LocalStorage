@@ -130,7 +130,7 @@ nav li a {
 }
 
 #signoutBtn {
-    background-color: rgb(255, 50, 50);
+    background-color: rgb(239, 147, 55);
     padding: 5px 10px;
     text-decoration: none;
     color: white;
@@ -142,14 +142,14 @@ nav li a {
 }
 
 #signoutBtn:hover {
-    background-color: rgb(255, 64, 64);
+    background-color: rgb(218, 148, 78);
 }
 
 
 #welcomeMessage {
     color: rgb(0, 225, 255);
     height: 35px;
-    display: none;
+    
     align-self: baseline;
     box-sizing: border-box;
     font-size: 20px;

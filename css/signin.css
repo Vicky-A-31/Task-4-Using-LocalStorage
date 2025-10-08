@@ -94,7 +94,7 @@ form button:hover {
 }
 
 #modal-width {
-    width: 400px;
+    width: 400px !important;
     margin: auto;
 }
 
@@ -157,17 +157,14 @@ form button:hover {
         margin-right: 5px;
     }
 
-    #modal-width {
-        width: 350px;
+    .modal-content {
+        width: 400px !important;
         margin: auto;
     }
 }
 
 
 @media (max-width: 576px) {
-    .bg-color {
-        border-radius: 0;
-    }
 
     h2 {
         font-size: 20px !important;
