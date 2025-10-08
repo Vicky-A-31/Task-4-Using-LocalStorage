@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bg-color {
+    background-color: rgba(33, 57, 96) !important;
+}
+
+.modal-content h2, .modal-content p {
+    color: white !important;
+}
+
+.modal-header {
+    position: relative;
+}
+
+h2 {
+    font-size: 24px !important;
+    width: 100% ;
+}
+
+
+/* popup close button */
+.btn-close {
+    margin: 0;
+    position: absolute;
+    right: 12px;
+}
+
+form {
+    color: white;
+}
+
+form label {
+    font-size: 18px;
+}
+
+/* input field height */
+.height {
+    height: 88px;
+}
+
+#height-for-terms {
+    height: 50px;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+form button {
+    background-color: rgb(239, 147, 55);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input {
+    accent-color: rgb(239, 147, 55);
+    background-color: white;
+    outline: none;
+}
+
+/* checkbox input style */
+#terms {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* radio button style */
+input[type="radio"] {
+    width:20px;
+    height: 20px;
+}
+
+input[type="radio"], .gender, input[type="checkbox"], .accept {
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+form button:hover {
+    background-color: rgb(218, 148, 78);
+}
+
+.modal-content a {
+    color: rgb(0, 0, 0) !important;
+}
+
+#modal-width {
+    width: 400px !important;
+    margin: auto;
+}
+
+#modal-width p {
+    font-size: 16px;
+}
+
+#modal-width button {
+    font-size: 16px;
+    padding: 5px 10px;
+    width: auto;
+}
+
+#modal-width img {
+    margin-right: 10px;
+}
+
+.error, .mistake {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+/* hide signup form content and it's title */
+#signup-content, #signupForm-title {
+    display: none;
+}
+
+
+
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 22px !important;
+    }
+
+    form input, form button {
+        font-size: 18px;
+    }
+
+    form input {
+        padding: 5px 8px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    .modal-body, .modal-header {
+        padding: 12px !important;
+    }
+
+    input[type="radio"] {
+        width:18px;
+        height: 18px;
+    }
+
+    #terms {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+    }
+
+    .modal-content {
+        width: 400px !important;
+        margin: auto;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    h2 {
+        font-size: 20px !important;
+    }
+
+    form input, form button {
+        font-size: 14px;
+    }
+
+    form input {
+        padding: 5px;
+    }
+
+    form label {
+        font-size: 12px;
+    }
+
+    input[type="radio"], #terms {
+        width:14px;
+        height: 14px;
+    }
+
+    .error, .mistake {
+        font-size: 12px;
+    }
+
+    .height {
+        height: 75px;
+    }
+
+    #height-for-terms {
+        height: 48px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .modal-content {
+        width: 300px !important;
+        margin: auto;
+    }
+
+    .modal-content #password-info-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .padding-zero {
+        padding-left: 0 !important; 
+        padding-right: 0 !important;
+    }
+}
