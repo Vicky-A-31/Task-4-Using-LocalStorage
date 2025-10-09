@@ -126,8 +126,8 @@ function validateSigninForm() {
 
   signinButton.textContent = "Signing In...";
   signinButton.disabled = true;
-  setCookie('currentUser', existUser['name']);
-  setCookie('currentUserEmail', email1.value);
+  setCookie('currentUser', existUser['name'], 1200000);
+  setCookie('currentUserEmail', email1.value, 1200000);
   
   // dismiss the modal
   setTimeout(() => {
@@ -376,6 +376,7 @@ function validate() {
     gender : gender.value,
     dob : dateofbirth.value,
     phone : phone.value,
+    cartItems : [],
   }
 
   const email = email2.value.toLowerCase();
@@ -383,16 +384,16 @@ function validate() {
   myobj[email] = newuser;
   users.push(myobj);
   localStorage.setItem('registeredUsers', JSON.stringify(users));
-  setCookie('currentUser', Name.value);
-  setCookie('currentUserEmail', email);
+  setCookie('currentUser', Name.value, 1200000);
+  setCookie('currentUserEmail', email, 1200000);
 
   location.href = './home.html';
 }
 
 
 // create cookie
-function setCookie(cname, cvalue, exdays) {
-  document.cookie = cname + "=" + cvalue + ";path=/";
+function setCookie(cname, cvalue, seconds) {
+  document.cookie = cname + "=" + cvalue + ";max-age=" + seconds + ";path=/";
 }
 
 
@@ -424,7 +425,6 @@ function resetFormData() {
 
 
 function showRegistrationSuccessModal() {
-
   const registrationSuccessModal = new bootstrap.Modal(
     document.getElementById("signupSuccessModal")
   );
