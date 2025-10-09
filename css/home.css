@@ -6,7 +6,7 @@
 
 .background {
     width: 100%;
-    height: 400px;
+    height: 370px;
     position: absolute;
     z-index: -1;
 }
@@ -113,7 +113,6 @@ nav li a {
 /* mobile navbar style end */
 
 
-
 #signoutBtn {
     background-color: rgb(239, 147, 55);
     padding: 5px 10px;
@@ -150,7 +149,7 @@ nav li a {
     border-radius: 5px;
 }
 
-.main-header h1, .main-header h4, .main-header h5 {
+.main-header h1, .main-header h4 {
     text-align: center;
 }
 
@@ -184,12 +183,43 @@ nav li a {
     margin-right: 2px;
 }
 
+/* Available items in your cart */
+.available-items {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    min-height: 150px;
+}
+
+.available-items h4 {
+    margin-bottom: 0;
+}
+
+.available-items p {
+    display: none;
+}
+
+.available-items h5 {
+    text-align: center;
+}
+
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.items-container .card {
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-body h5 {
+    margin-bottom: 0;
+}
 
 /* footer section styles start */
 footer {
     background-color: rgba(33, 57, 96, 0.8);
     padding: 10px;
-    margin-top: 8px;
 }
 
 .social-icons {
@@ -236,6 +266,97 @@ footer {
 }
 
 
+/* Add new Item Modal styles */
+.bg-color {
+    background-color: rgba(33, 57, 96) !important;
+}
+
+.modal-content h2, .modal-content p {
+    color: white !important;
+}
+
+.modal-header {
+    position: relative;
+}
+
+h2 {
+    font-size: 24px !important;
+    width: 100% ;
+}
+
+
+/* popup close button */
+.btn-close {
+    margin: 0;
+    position: absolute;
+    right: 12px;
+}
+
+form {
+    color: white;
+}
+
+form label {
+    font-size: 18px;
+}
+
+/* input field height */
+.height {
+    height: 88px;
+}
+
+form input, form button, form select {
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+form textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 4px;
+    border: none;
+}
+
+form button {
+    background-color: rgb(239, 147, 55);
+    color: white;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+
+form button:hover {
+    background-color: rgb(218, 148, 78);
+}
+
+.modal-content a {
+    color: rgb(0, 0, 0) !important;
+}
+
+#modal-width p {
+    font-size: 16px;
+}
+
+#modal-width button {
+    font-size: 16px;
+    padding: 5px 10px;
+    width: auto;
+}
+
+#modal-width img {
+    margin-right: 10px;
+}
+
+.error {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+
+
 
 /* Responsive styles start */
 
@@ -249,7 +370,7 @@ footer {
 
 @media (min-width: 990px) and (max-width: 1200px) {
     .background {
-        height: 445px;
+        height: 390px;
     }
 
     div .sidebar {
@@ -263,11 +384,17 @@ footer {
 }
 
 
+@media (max-width: 996px) {
+    .items-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
-@media (min-width: 770px) and (max-width: 990px) {
+
+@media (min-width: 770px) and (max-width: 992px) {
 
     .background {
-        height: 410px;
+        height: 360px;
     }
 
     div .sidebar {
@@ -291,10 +418,13 @@ footer {
         font-size: 24px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 18px;
     }
 
+    .buttons-group button {
+        padding: 8px 10px;
+    }
 }
 
 
@@ -309,7 +439,7 @@ footer {
 @media (min-width: 650px) and (max-width: 770px) {
 
     .background {
-        height: 350px;
+        height: 320px;
     }
 
     div .sidebar {
@@ -333,16 +463,12 @@ footer {
     #signoutBtn {
         padding: 4px 8px;
     }
-
-    .main-header {
-        padding: 5px 10px;
-    }
     
     .main-header h1 {
         font-size: 22px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 16px;
     }
 
@@ -366,10 +492,16 @@ footer {
 }
 
 
+@media (max-width: 700px) {
+    .background {
+        height: 350px;
+    }
+}
+
 
 @media (max-width: 650px) {
     .background {
-        height: 280px;
+        height: 260px;
     }
 
     .row {
@@ -429,7 +561,7 @@ footer {
         font-size: 20px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 14px;
     }
 
@@ -479,19 +611,28 @@ footer {
         margin-left: auto;
         margin-right: auto !important;
     }
+
+    .available-items h5 {
+        font-size: 16px;
+    }
+
+    .available-items h4 {
+        font-size: 18px;
+    }
+
 }
 
 
 @media (max-width: 480px) {
     .background {
-        height: 300px;
+        height: 270px;
     }
 
     .main-header h1 {
         font-size: 18px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 14px;
     }
 
@@ -500,7 +641,7 @@ footer {
 
 @media (max-width: 440px) {
     .background {
-        height: 320px;
+        height: 280px;
     }
 
     .main-header h1{
@@ -508,4 +649,76 @@ footer {
     }
 }
 
+
+@media (max-width: 380px) {
+    .background {
+        height: 320px;
+    }
+}
 /* Responsive styles end */
+
+
+
+
+/* Responsive Styles for Add New Item start */
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 22px !important;
+    }
+
+    form input, form button, form select {
+        font-size: 18px;
+    }
+
+    form input {
+        padding: 5px 8px;
+    }
+
+    form label {
+        font-size: 16px;
+    }
+
+    .modal-body, .modal-header {
+        padding: 12px !important;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    h2 {
+        font-size: 20px !important;
+    }
+
+    form input, form button, form select {
+        font-size: 14px;
+    }
+
+    form input {
+        padding: 5px;
+    }
+
+    form label {
+        font-size: 12px;
+    }
+
+    .error {
+        font-size: 12px;
+    }
+
+    .height {
+        height: 75px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .modal-content {
+        width: 300px !important;
+        margin: auto;
+    }
+
+}

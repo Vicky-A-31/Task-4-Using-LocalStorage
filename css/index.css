@@ -7,7 +7,7 @@
 
 .background {
     width: 100%;
-    height: 400px;
+    height: 370px;
     position: absolute;
     z-index: -1;
 }
@@ -165,7 +165,7 @@ nav li a {
     border-radius: 5px;
 }
 
-.main-header h1, .main-header h4, .main-header h5 {
+.main-header h1, .main-header h4 {
     text-align: center;
 }
 
@@ -335,7 +335,7 @@ footer {
 
 @media (min-width: 990px) and (max-width: 1200px) {
     .background {
-        height: 445px;
+        height: 390px;
     }
 
     div .sidebar {
@@ -380,10 +380,10 @@ footer {
 }
 
 
-@media (min-width: 770px) and (max-width: 992px) {
+@media (min-width: 770px) and (max-width: 990px) {
 
     .background {
-        height: 410px;
+        height: 360px;
     }
 
     div .sidebar {
@@ -407,12 +407,16 @@ footer {
         font-size: 24px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 18px;
     }
 
     .main-content .img-container {
         margin: 10px;
+    }
+
+    .buttons-group button {
+        padding: 8px 10px;
     }
 }
 
@@ -433,7 +437,7 @@ footer {
     }
 
     .background {
-        height: 350px;
+        height: 320px;
     }
 
     div .sidebar {
@@ -457,16 +461,12 @@ footer {
     #welcomeMessage {
         font-size: 16px;
     }
-
-    .main-header {
-        padding: 5px 10px;
-    }
     
     .main-header h1 {
         font-size: 22px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 16px;
     }
 
@@ -494,10 +494,16 @@ footer {
 }
 
 
+@media (max-width: 700px) {
+    .background {
+        height: 350px;
+    }
+}
+
 
 @media (max-width: 650px) {
     .background {
-        height: 280px;
+        height: 260px;
     }
 
     .row {
@@ -549,15 +555,11 @@ footer {
         padding: 5px;
     }
 
-    .main-header {
-        padding: 10px;
-    }
-
     .main-header h1, .main-footer h4 {
         font-size: 20px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 14px;
     }
 
@@ -647,14 +649,14 @@ footer {
 
 @media (max-width: 480px) {
     .background {
-        height: 300px;
+        height: 270px;
     }
 
     .main-header h1, .main-footer h4 {
         font-size: 18px;
     }
 
-    .main-header h4, .main-header h5 {
+    .main-header h4 {
         font-size: 14px;
     }
 
@@ -672,11 +674,18 @@ footer {
 
 @media (max-width: 440px) {
     .background {
-        height: 320px;
+        height: 280px;
     }
 
     .main-header h1, .main-footer h4 {
         font-size: 16px;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .background {
+        height: 320px;
     }
 }
 

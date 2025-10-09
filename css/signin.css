@@ -93,11 +93,6 @@ form button:hover {
     color: rgb(0, 0, 0) !important;
 }
 
-#modal-width {
-    width: 400px !important;
-    margin: auto;
-}
-
 #modal-width p {
     font-size: 16px;
 }
@@ -157,10 +152,6 @@ form button:hover {
         margin-right: 5px;
     }
 
-    .modal-content {
-        width: 400px !important;
-        margin: auto;
-    }
 }
 
 
