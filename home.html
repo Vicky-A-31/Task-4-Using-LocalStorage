@@ -113,6 +113,7 @@
           </div>
         </div>
 
+
         <!-- Available items -->
         <div class="available-items">
           <div class="row">
@@ -124,8 +125,9 @@
                 Item</button>
             </div>
           </div>
-          <p id="no-items-found">No Items Found!</p>
-          <div class="items-container"></div>
+          <p id="no-items-found" class="text-center">No Items Found!</p>
+          <div class="items-container">
+          </div>
         </div>
 
 
@@ -182,6 +184,77 @@
         </div>
 
 
+        <!-- Add Item Modal -->
+        <div class="modal fade" id="editItemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content bg-color">
+              <div class="modal-header">
+                <h2 class="text-center modal-title">
+                  Edit Item
+                </h2>
+                <button type="button" class="btn-close" onclick="resetFormData()" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form autocomplete="off" novalidate name="addForm">
+                  <div class="height">
+                    <label for="itemname">Item Name</label>
+                    <input type="text" name="itemname" id="itemname" placeholder="item name" />
+                    <span class="error"></span>
+                  </div>
+                  <div class="height">
+                    <label for="brandname">Brand Name</label>
+                    <input type="text" name="brandname" id="brandname" placeholder="brand name" />
+                    <span class="error"></span>
+                  </div>
+                  <div class="height">
+                    <label for="quantity">Quantity</label>
+                    <input type="tel" name="quantity" id="quantity" placeholder="quantity" maxlength="10" />
+                    <span class="error"></span>
+                  </div>
+                  <div class="height">
+                    <label for="price">Price</label>
+                    <select id="price" name="price">
+                      <option value="">-- Select a Price --</option>
+                      <option value="100">&#8377; 100</option>
+                      <option value="200">&#8377; 200</option>
+                      <option value="300">&#8377; 300</option>
+                      <option value="400">&#8377; 400</option>
+                      <option value="500">&#8377; 500</option>
+                    </select>
+                    <span class="error"></span>
+                  </div>
+                  <div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                  </div>
+                  <button type="submit">ADD</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Confirmation Modal -->
+        <div class="modal fade" id="deleteItemModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="modal-width">
+              <div class="modal-body mt-3 text-center">
+                <img src="./Assets/images/confirm.png" alt="confirm" id="delete-icon">
+                Are you sure to delete?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <!-- Item Added Modal -->
         <div class="modal fade" id="itemAddedModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
           role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -192,54 +265,11 @@
                 Item Added Successfully
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="location.reload();">Ok</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
               </div>
             </div>
           </div>
         </div>
-
-
-        <!-- Add to cart section -->
-        <!--
-        <div class="add-to-cart">
-          <h4>Metals Collection</h4>
-          <div class="metals-collection">
-
-            <div class="card" id="card1">
-              <img src="./Assets/images/image1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Item 1</h5>
-                <button class="btn btn-primary" id="btn1"><i class="bi bi-cart-plus"></i></button>
-              </div>
-            </div>
-
-            <div class="card" id="card2">
-              <img src="./Assets/images/image2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Item 2</h5>
-                <button class="btn btn-primary" id="btn2"><i class="bi bi-cart-plus"></i></button>
-              </div>
-            </div>
-
-            <div class="card" id="card3">
-              <img src="./Assets/images/image1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Item 3</h5>
-                <button class="btn btn-primary" id="btn3"><i class="bi bi-cart-plus"></i></button>
-              </div>
-            </div>
-
-            <div class="card" id="card4">
-              <img src="./Assets/images/image2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Item 4</h5>
-                <button class="btn btn-primary" id="btn4"><i class="bi bi-cart-plus"></i></button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        -->
 
 
       </div>
