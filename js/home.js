@@ -378,8 +378,8 @@ function showEditModal(id) {
   quantity.value = item.quantity;
   price.value = item.price;
   description.value = item.description;
-  setTimeout(() => validate(item.id), 1000);
 } 
+
 
 
 
