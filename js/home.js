@@ -169,12 +169,12 @@ function resetFormData() {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  validate();
+  addNewItem(itemName, brandName, quantity, price, description, errorArray);
 });
 
 
 // quantity field allows only numbers
-document.getElementById("quantity").addEventListener("keydown", function (event) {
+quantity.addEventListener("keydown", function (event) {
   // Allow control keys like Backspace, Delete, Arrow keys, etc.
   const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
 
@@ -191,8 +191,8 @@ document.getElementById("quantity").addEventListener("keydown", function (event)
 });
 
 
-// validate and add new item form
-function validate(id) {
+// validate inputs fields
+function validate(itemName, brandName, quantity, price, description, errorArray) {
 
   itemName.addEventListener("input", () => {
     errorArray[0].innerText = "";
@@ -214,36 +214,48 @@ function validate(id) {
   if (itemName.value === "") {
     errorArray[0].innerText = "item name is required";
     itemName.focus();
-    return;
+    return false;
   } 
 
   if (brandName.value === "") {
     errorArray[1].innerText = "brand name is required";
     brandName.focus();
-    return;
+    return false;
   } 
 
   if (quantity.value === "") {
     errorArray[2].innerText = "quantity is required";
     quantity.focus();
-    return;
+    return false;
   } 
 
   if (price.value === "") {
     errorArray[3].innerText = "price is required";
     price.focus();
-    return;
+    return false;
   }
 
+  return [itemName.value, brandName.value, quantity.value, price.value, description.value];
+}
+
+
+
+// add new item form
+function addNewItem(itemName, brandName, quantity, price, description, errorArray) {
+
+  const inputs = validate(itemName, brandName, quantity, price, description, errorArray);
+  if(!inputs) {
+    return;
+  } else {
 
   // If all validations pass, submit the form;
     const newItem = {
-    itemName : itemName.value,
-    brandName : brandName.value,
-    quantity : quantity.value,
-    price : price.value,
-    totalAmount : (Number(quantity.value) * Number(price.value)),
-    description : description.value,
+    itemName : inputs[0],
+    brandName : inputs[1],
+    quantity : inputs[2],
+    price : inputs[3],
+    totalAmount : (Number(inputs[2]) * Number(inputs[3])),
+    description : inputs[4],
     }
 
     addItemToUser(currentUserEmail, newItem);
@@ -259,23 +271,8 @@ function validate(id) {
 
     // reseting form data
     resetFormData();
-  
-    /*
-    const users = getRegisteredUsers();
-    const userObj = users.find(user => user.hasOwnProperty(currentUserEmail));
-    const item = userObj[currentUserEmail].cartItems.find(item => item.id == id);
-    item.itemName = itemName.value;
-    item.brandName = brandName.value;
-    item.quantity = quantity.value;
-    item.price = price.value;
-    item.totalAmount = (Number(quantity.value) * Number(price.value));
-    item.description = description.value;
+  }
 
-    userObj[currentUserEmail].cartItems  = userObj[currentUserEmail].cartItems.filter(item => item.id != id);
-
-    userObj[currentUserEmail].cartItems.push(item);
-    saveRegisteredUsers(users);
-    */
 }
 
 
@@ -335,6 +332,7 @@ function removeItemFromUser(userEmail, itemId) {
 }
 
 
+// update cart item's id
 function updateItemIds() {
   const users = getRegisteredUsers();
   const userObj = users.find(user => user.hasOwnProperty(currentUserEmail));
@@ -361,27 +359,88 @@ function showItemAddedModal() {
 
 
 
-
+// edit the cart item
+const editForm = document.forms['editForm'];
+const itemName1 = editForm['itemname'];
+const brandName1 = editForm['brandname'];
+const quantity1 = editForm['quantity'];
+const price1 = editForm['price'];
+const description1 = editForm['description'];
+const mistakeArray = document.getElementsByClassName("mistake");
+let editId = 0;
 
 // show edit modal
 function showEditModal(id) {
   const editModal = new bootstrap.Modal(
     document.getElementById('editItemModal')
   );
-
   editModal.show(); 
   
   const cartItems = getCartItems(currentUserEmail);
   const item = cartItems.find(item => item.id == id);
-  itemName.value = item.itemName;
-  brandName.value = item.brandName;
-  quantity.value = item.quantity;
-  price.value = item.price;
-  description.value = item.description;
-} 
+  itemName1.value = item.itemName;
+  brandName1.value = item.brandName;
+  quantity1.value = item.quantity;
+  price1.value = item.price;
+  description1.value = item.description;
+  editId = id;
+}
 
 
+editForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  saveCartItem(editId, itemName1, brandName1, quantity1, price1, description1, mistakeArray);
+})
 
+
+// save exist cart item 
+function saveCartItem(id, itemName1, brandName1, quantity1, price1, description1, mistakeArray) {
+    
+  const inputs = validate(itemName1, brandName1, quantity1, price1, description1, mistakeArray);  
+
+    if(!inputs) {
+      return;
+    } else {
+      const users = getRegisteredUsers();
+      const userObj = users.find(user => user.hasOwnProperty(currentUserEmail));
+      const item = userObj[currentUserEmail].cartItems.find(item => item.id == id);
+      item.itemName = inputs[0];
+      item.brandName = inputs[1];
+      item.quantity = inputs[2];
+      item.price = inputs[3];
+      item.totalAmount = (inputs[2] * inputs[3]);
+      item.description = inputs[4];
+
+      saveRegisteredUsers(users);
+      const cartItems = getCartItems(currentUserEmail);
+      itemsContainer.innerHTML = "";
+      displayItems(cartItems);
+
+      // dismiss editItemModal
+      const modal = bootstrap.Modal.getInstance(
+        document.getElementById('editItemModal')
+      );
+      modal.hide();
+  }
+}
+
+
+// quantity field allows numbers only
+quantity1.addEventListener("keydown", function (event) {
+  // Allow control keys like Backspace, Delete, Arrow keys, etc.
+  const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
+
+  // Allow numbers (0-9) and control keys
+  if (
+    (event.key >= "0" && event.key <= "9") ||
+    allowedKeys.includes(event.key)
+  ) {
+    return; // Allow the keypress
+  }
+
+  // Prevent all other keys
+  event.preventDefault();
+});
 
 
 
