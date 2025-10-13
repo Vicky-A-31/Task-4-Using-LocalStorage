@@ -138,7 +138,8 @@ nav li a {
     display: none;
     padding: 5px;
     margin-bottom: 0;
-    border: 2px solid white;
+    border: 3px solid transparent;
+    border-image: linear-gradient(75deg, rgb(99, 208, 245), deepskyblue, rgb(0, 162, 255)) 1;
     border-radius: 2px;
 }
 
@@ -192,10 +193,20 @@ nav li a {
 
 .available-items h4 {
     margin-bottom: 0;
+    height: 35px;
+    padding: 5px 0;
 }
 
 .available-items > p {
     display: none;
+    padding: 20px 10px;
+    box-shadow: 0 0 4px 1px gray, 0 0 6px 1px gray;
+    margin: 10px 0;
+}
+
+.available-items #addBtn {
+    height: 32px;
+    padding: 4px 12px;
 }
 
 .available-items h5 {
@@ -228,6 +239,11 @@ nav li a {
 .card-body table td {
     padding: 10px;
     width: 50%;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* footer section styles start */
@@ -364,7 +380,7 @@ form button:hover {
     margin-right: 10px;
 }
 
-.error {
+.error, .mistake {
     color: rgb(0, 0, 0);
     font-size: 14px;
 }
@@ -433,6 +449,10 @@ form button:hover {
     .buttons-group button {
         padding: 8px 10px;
     }
+
+    .items-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 
@@ -497,6 +517,10 @@ form button:hover {
         width: 18px;
         height: 18px;
     }
+
+    .items-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 
@@ -527,7 +551,6 @@ form button:hover {
     .custom-bg-color {
         background-color: rgba(33, 57, 96);
     }
-
 
     nav li {
         font-size: 12px;
@@ -593,6 +616,27 @@ form button:hover {
         height: 18px;
     }
 
+    .card-body, .card-header, .card-footer, .card-body table td {
+        padding: 5px !important;
+    }
+
+    .card-body table td {
+        font-size: 14px;
+    }
+
+    .available-items h5 {
+        font-size: 18px;
+    }
+
+    .available-items #addBtn {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .card-footer button {
+        padding: 3px 6px;
+    }
+
     footer {
         padding: 5px;
     }
@@ -624,6 +668,14 @@ form button:hover {
         font-size: 16px;
     }
 
+    .items-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-body table td {
+        font-size: 12px;
+    }
+
     .available-items h4 {
         font-size: 18px;
     }
@@ -642,6 +694,15 @@ form button:hover {
 
     .main-header h4 {
         font-size: 14px;
+    }
+
+    .items-container {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+
+    .card {
+        width: 250px;
     }
 
 }
@@ -668,7 +729,7 @@ form button:hover {
 
 
 
-/* Responsive Styles for Add New Item start */
+/* Responsive Styles for Add New Item modal start */
 
 @media (max-width: 768px) {
     h2 {
