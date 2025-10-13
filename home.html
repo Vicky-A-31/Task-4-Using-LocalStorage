@@ -121,7 +121,7 @@
               <h4>Available Items in your Cart</h4>
             </div>
             <div class="col-sm-4">
-              <button class="btn btn-primary d-block mx-auto" data-bs-toggle="modal" data-bs-target="#addItemModal">Add
+              <button class="btn btn-primary d-block mx-auto" id="addBtn" data-bs-toggle="modal" data-bs-target="#addItemModal">Add
                 Item</button>
             </div>
           </div>
@@ -197,25 +197,25 @@
                   aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form autocomplete="off" novalidate name="addForm">
+                <form autocomplete="off" novalidate name="editForm">
                   <div class="height">
-                    <label for="itemname">Item Name</label>
-                    <input type="text" name="itemname" id="itemname" placeholder="item name" />
-                    <span class="error"></span>
+                    <label for="itemname1">Item Name</label>
+                    <input type="text" name="itemname" id="itemname1" placeholder="item name" />
+                    <span class="mistake"></span>
                   </div>
                   <div class="height">
-                    <label for="brandname">Brand Name</label>
-                    <input type="text" name="brandname" id="brandname" placeholder="brand name" />
-                    <span class="error"></span>
+                    <label for="brandname1">Brand Name</label>
+                    <input type="text" name="brandname" id="brandname1" placeholder="brand name" />
+                    <span class="mistake"></span>
                   </div>
                   <div class="height">
-                    <label for="quantity">Quantity</label>
-                    <input type="tel" name="quantity" id="quantity" placeholder="quantity" maxlength="10" />
-                    <span class="error"></span>
+                    <label for="quantity1">Quantity</label>
+                    <input type="tel" name="quantity" id="quantity1" placeholder="quantity" maxlength="10" />
+                    <span class="mistake"></span>
                   </div>
                   <div class="height">
-                    <label for="price">Price</label>
-                    <select id="price" name="price">
+                    <label for="price1">Price</label>
+                    <select id="price1" name="price">
                       <option value="">-- Select a Price --</option>
                       <option value="100">&#8377; 100</option>
                       <option value="200">&#8377; 200</option>
@@ -223,11 +223,11 @@
                       <option value="400">&#8377; 400</option>
                       <option value="500">&#8377; 500</option>
                     </select>
-                    <span class="error"></span>
+                    <span class="mistake"></span>
                   </div>
                   <div>
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description"></textarea>
+                    <label for="description1">Description</label>
+                    <textarea name="description" id="description1"></textarea>
                   </div>
                   <button type="submit">SAVE</button>
                 </form>
